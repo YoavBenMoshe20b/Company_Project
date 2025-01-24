@@ -89,8 +89,8 @@ public class RoleDA {
 			
 					try {
 						Class.forName("com.mysql.cj.jdbc.Driver");
-						Connection conRole;
-						conRole = DriverManager.getConnection("jdbc:mysql://localhost:3306/companydb","root","Eden@1910");
+						
+						Connection conRole = DBConnection.getInstance();
 						String query1 = "INSERT INTO roleTable(roleID,DName, roleName,roleIsChange, roleIsSync, roleStartingHour, roleEndingHour,roleWorkAtHome) VALUES(?,?,?,?,?,?,?,?)";
 						PreparedStatement pst1 = conRole.prepareStatement(query1);
 						pst1.setInt(1,r.getId());
@@ -136,8 +136,8 @@ public class RoleDA {
 		try {
 			
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection conRole;
-			conRole = DriverManager.getConnection("jdbc:mysql://localhost:3306/companydb","root","Eden@1910");
+			
+			Connection conRole = DBConnection.getInstance();
 			
 			String query4 = "DELETE FROM MannedTable WHERE RID = " + r.getId()+";";
 			PreparedStatement pst4 = conRole.prepareStatement(query4);
@@ -159,8 +159,8 @@ public class RoleDA {
 		try {
 			
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection conDEmployee;
-			conDEmployee = DriverManager.getConnection("jdbc:mysql://localhost:3306/companydb","root","Eden@1910");
+			
+			Connection conDEmployee = DBConnection.getInstance();
 			
 			String query4 = "DELETE FROM roleTable WHERE roleID = " + r.getId()+";";
 			PreparedStatement pst4 = conDEmployee.prepareStatement(query4);
@@ -194,8 +194,8 @@ public int returnRole(int ID) {
 			
 			
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection conDEmployee;
-			conDEmployee = DriverManager.getConnection("jdbc:mysql://localhost:3306/companydb","root","Eden@1910");
+			
+			Connection conDEmployee = DBConnection.getInstance();
 			String query4 = "SELECT * FROM MannedTable WHERE RID = " + ID + "";
 			
 			PreparedStatement pst4 = conDEmployee.prepareStatement(query4);

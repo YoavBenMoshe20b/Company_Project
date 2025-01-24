@@ -75,8 +75,7 @@ public class EmployeeDA {
 			
 					try {
 						Class.forName("com.mysql.cj.jdbc.Driver");
-						Connection conEmployee;
-						conEmployee = DriverManager.getConnection("jdbc:mysql://localhost:3306/companydb","root","Eden@1910");
+						Connection conEmployee = DBConnection.getInstance();
 						String query = "INSERT INTO EmployeeTable(employeeID,employeeName, employeeAddress,employeeStartingHour, employeeEndingHour, WorkAtHome) VALUES(?,?,?,?,?,?)";
 						PreparedStatement pst = conEmployee.prepareStatement(query);
 						pst.setInt(1,e.getId() );
@@ -112,8 +111,8 @@ public class EmployeeDA {
 							
 							
 							Class.forName("com.mysql.cj.jdbc.Driver");
-							Connection conEmployee;
-							conEmployee = DriverManager.getConnection("jdbc:mysql://localhost:3306/companydb","root","Eden@1910");
+							
+							Connection conEmployee = DBConnection.getInstance();
 							String query = "INSERT INTO SalaryTable(EID,salaryType) VALUES(?,?)";
 							PreparedStatement pst = conEmployee.prepareStatement(query);	
 						
@@ -148,8 +147,8 @@ public class EmployeeDA {
 						{
 						try {
 							Class.forName("com.mysql.cj.jdbc.Driver");
-							Connection conEmployee;
-							conEmployee = DriverManager.getConnection("jdbc:mysql://localhost:3306/companydb","root","Eden@1910");
+							
+							Connection conEmployee = DBConnection.getInstance();
 							String query = "INSERT INTO hourSalaryTable(EID,paymentPerHours,hours) VALUES(?,?,?)";
 							PreparedStatement pst = conEmployee.prepareStatement(query);
 						
@@ -177,8 +176,8 @@ public class EmployeeDA {
 						{
 						try{
 							Class.forName("com.mysql.cj.jdbc.Driver");
-							Connection conEmployee;
-							conEmployee = DriverManager.getConnection("jdbc:mysql://localhost:3306/companydb","root","Eden@1910");
+							
+							Connection conEmployee = DBConnection.getInstance();
 							String query = "INSERT INTO globalSalaryTable(EID,globalPayment,globalHours,bonus) VALUES(?,?,?,?)";
 							PreparedStatement pst = conEmployee.prepareStatement(query);	
 							
@@ -228,8 +227,8 @@ public class EmployeeDA {
 			
 			
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection conDEmployee;
-			conDEmployee = DriverManager.getConnection("jdbc:mysql://localhost:3306/companydb","root","Eden@1910");
+			
+			Connection conDEmployee = DBConnection.getInstance();
 			String query4 = "SELECT * FROM salaryTable WHERE EID = " + e.getId()+ "";
 			
 			PreparedStatement pst4 = conDEmployee.prepareStatement(query4);
@@ -253,9 +252,8 @@ public class EmployeeDA {
 		try {
 			
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection conDEmployee;
-			conDEmployee = DriverManager.getConnection("jdbc:mysql://localhost:3306/companydb","root","Eden@1910");
 			
+			Connection conDEmployee = DBConnection.getInstance();
 			String query4 = "DELETE FROM salaryTable WHERE EID = " + e.getId()+";";
 			PreparedStatement pst4 = conDEmployee.prepareStatement(query4);
 			pst4.executeUpdate();
@@ -276,8 +274,8 @@ public class EmployeeDA {
 			try {
 				
 				Class.forName("com.mysql.cj.jdbc.Driver");
-				Connection conDEmployee;
-				conDEmployee = DriverManager.getConnection("jdbc:mysql://localhost:3306/companydb","root","Eden@1910");
+				
+				Connection conDEmployee = DBConnection.getInstance();
 				String query4 = "DELETE FROM globalSalaryTable WHERE EID = " + e.getId()+";";
 				PreparedStatement pst4 = conDEmployee.prepareStatement(query4);
 				pst4.executeUpdate();
@@ -305,8 +303,8 @@ public class EmployeeDA {
 					
 					
 					Class.forName("com.mysql.cj.jdbc.Driver");
-					Connection conDEmployee;
-					conDEmployee = DriverManager.getConnection("jdbc:mysql://localhost:3306/companydb","root","Eden@1910");
+					
+					Connection conDEmployee = DBConnection.getInstance();
 					String query4 = "DELETE FROM hourSalaryTable WHERE EID = " + e.getId()+";";
 					PreparedStatement pst4 = conDEmployee.prepareStatement(query4);
 					pst4.executeUpdate();
@@ -330,8 +328,8 @@ public class EmployeeDA {
 
 				
 				Class.forName("com.mysql.cj.jdbc.Driver");
-				Connection conEmployee;
-				conEmployee = DriverManager.getConnection("jdbc:mysql://localhost:3306/companydb","root","Eden@1910");
+				
+				Connection conEmployee = DBConnection.getInstance();
 				String query = "UPDATE MannedTable SET EID = NULL WHERE RID = " + r.getId() ;
 				PreparedStatement pst = conEmployee.prepareStatement(query);
 				pst.executeUpdate();
@@ -355,8 +353,8 @@ public class EmployeeDA {
 				
 				
 				Class.forName("com.mysql.cj.jdbc.Driver");
-				Connection conDEmployee;
-				conDEmployee = DriverManager.getConnection("jdbc:mysql://localhost:3306/companydb","root","Eden@1910");
+				
+				Connection conDEmployee = DBConnection.getInstance();
 				
 				String query4 = "DELETE FROM EmployeeTable WHERE employeeID = " + e.getId()+";";
 				PreparedStatement pst4 = conDEmployee.prepareStatement(query4);
@@ -397,8 +395,8 @@ public class EmployeeDA {
 			
 			
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection conDEmployee;
-			conDEmployee = DriverManager.getConnection("jdbc:mysql://localhost:3306/companydb","root","Eden@1910");
+			
+			Connection conDEmployee = DBConnection.getInstance();
 			String query4 = "SELECT * FROM salaryTable WHERE EID = " + ID + "";
 			
 			PreparedStatement pst4 = conDEmployee.prepareStatement(query4);
@@ -436,8 +434,8 @@ public class EmployeeDA {
 		try {
 			
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection conDEmployee;
-			conDEmployee = DriverManager.getConnection("jdbc:mysql://localhost:3306/companydb","root","Eden@1910");
+			
+			Connection conDEmployee = DBConnection.getInstance();
 			String query4 = "SELECT * FROM globalSalaryTable WHERE EID = " + ID+";";
 			PreparedStatement pst4 = conDEmployee.prepareStatement(query4);
 			
@@ -484,8 +482,8 @@ public class EmployeeDA {
 				int hour= -1;
 				double payment = -1;
 				Class.forName("com.mysql.cj.jdbc.Driver");
-				Connection conDEmployee;
-				conDEmployee = DriverManager.getConnection("jdbc:mysql://localhost:3306/companydb","root","Eden@1910");
+				
+				Connection conDEmployee = DBConnection.getInstance();
 				String query4 = "SELECT * FROM hourSalaryTable WHERE EID = " + ID+";";
 				PreparedStatement pst4 = conDEmployee.prepareStatement(query4);
 				

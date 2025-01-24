@@ -95,8 +95,7 @@ public class DepartmentDA {
 	
 					try {
 						Class.forName("com.mysql.cj.jdbc.Driver");
-						Connection conDepartment;
-						conDepartment = DriverManager.getConnection("jdbc:mysql://localhost:3306/companydb","root","Eden@1910");
+						Connection conDepartment = DBConnection.getInstance();
 						String query = "INSERT INTO departmentTable(departmentName,departmentIsChange, departmentIsSync,departmentStartingHour, departmentEndingHour, departmentWorkAtHome) VALUES(?,?,?,?,?,?)";
 						PreparedStatement pst = conDepartment.prepareStatement(query);
 						pst.setString(1, d.getName());
@@ -127,9 +126,8 @@ public class DepartmentDA {
 		try {
 			
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection conDEmployee;
-			conDEmployee = DriverManager.getConnection("jdbc:mysql://localhost:3306/companydb","root","Eden@1910");
-					
+			
+			Connection conDEmployee = DBConnection.getInstance();
 			String query4 = "DELETE FROM DepartmentTable WHERE DepartmentName = ?";
 			PreparedStatement pst4 = conDEmployee.prepareStatement(query4);
 			pst4.setString(1, d.getName());
